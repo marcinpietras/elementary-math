@@ -10,8 +10,8 @@ public class DivisionSentenceGeneratorService implements SentenceGeneratorServic
 	@Override
 	public String generateSentence(int resultFloor, int resultCeiling) {
 		Random random = new Random();
-		int firstNumber = random.nextInt(10);
-		int secondNumber = random.nextInt(10);
+		int firstNumber = random.nextInt(resultCeiling/2);
+		int secondNumber = random.nextInt(resultCeiling/2);
 		
 		if (firstNumber < 3 || secondNumber < 3 || (firstNumber * secondNumber) < resultFloor || (firstNumber * secondNumber) > resultCeiling) {
 			return generateSentence(resultFloor, resultCeiling);

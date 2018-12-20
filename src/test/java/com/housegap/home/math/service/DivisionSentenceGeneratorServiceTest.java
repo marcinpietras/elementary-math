@@ -48,6 +48,26 @@ public class DivisionSentenceGeneratorServiceTest {
 			logger.info(sentence);
 		}
 	}
+	
+	@Test
+	public void testGenerateSentence10to150() {
+		String sentence;
+		logger.info("Generating 20 sentences from 10 to 150");
+		for (int i = 0; i < 20; i++) {
+			sentence = sentenceGeneratorService.generateSentence(10, 150);
+			logger.info(sentence);
+		}
+	}
+	
+	@Test
+	public void testGenerateSentence10to200() {
+		String sentence;
+		logger.info("Generating 20 sentences from 10 to 200");
+		for (int i = 0; i < 20; i++) {
+			sentence = sentenceGeneratorService.generateSentence(10, 200);
+			logger.info(sentence);
+		}
+	}
 
 
 }
