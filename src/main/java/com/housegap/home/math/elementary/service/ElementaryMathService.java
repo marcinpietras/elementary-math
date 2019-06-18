@@ -42,32 +42,44 @@ public class ElementaryMathService implements MathService {
 			sections.add(new MathSectionVO("Addition", generateAdditionSentence(10, 20, 100)));
 			sections.add(new MathSectionVO("Substraction", generateSubstractionSentence(10, 5, 100)));
 			sections.add(new MathSectionVO("Simple Multiplication", generateSimpleMultiplicationSentence(10, 10, 40)));
+			sections.add(new MathSectionVO("Simple Division", generateDivisionSentence(10, 10, 40)));
 			sections.add(
 					new MathSectionVO("Advance Multiplication", generateAdvanceMultiplicationSentence(10, 20, 100)));
-			sections.add(new MathSectionVO("Division", generateDivisionSentence(10, 20, 40)));
+			sections.add(new MathSectionVO("Simple Division", generateDivisionSentence(10, 20, 40)));
 		} else if ("3".equalsIgnoreCase(gradeKey)) {
 			sections.add(new MathSectionVO("Addition", generateAdditionSentence(10, 20, 100)));
 			sections.add(new MathSectionVO("Substraction", generateSubstractionSentence(10, 5, 100)));
 			sections.add(new MathSectionVO("Simple Multiplication", generateSimpleMultiplicationSentence(10, 10, 100)));
+			sections.add(new MathSectionVO("Simple Division", generateDivisionSentence(10, 20, 100)));
 			sections.add(
 					new MathSectionVO("Advance Multiplication", generateAdvanceMultiplicationSentence(10, 20, 100)));
-			sections.add(new MathSectionVO("Division", generateDivisionSentence(10, 20, 100)));
+			sections.add(new MathSectionVO("Simpl Division", generateDivisionSentence(10, 20, 100)));
 		} else if ("4".equalsIgnoreCase(gradeKey)) {
 			sections.add(new MathSectionVO("Addition", generateAdditionSentence(10, 20, 100)));
 			sections.add(new MathSectionVO("Substraction", generateSubstractionSentence(10, 5, 100)));
 			sections.add(new MathSectionVO("Simple Multiplication", generateSimpleMultiplicationSentence(10, 10, 100)));
+			sections.add(new MathSectionVO("Simple Division", generateDivisionSentence(10, 20, 100)));
 			sections.add(
 					new MathSectionVO("Advance Multiplication", generateAdvanceMultiplicationSentence(10, 20, 150)));
-			sections.add(new MathSectionVO("Division", generateDivisionSentence(10, 20, 100)));
+			sections.add(new MathSectionVO("Advance Division", generateDivisionSentence(10, 20, 120)));
 		} else if ("5".equalsIgnoreCase(gradeKey)) {
 			sections.add(new MathSectionVO("Addition", generateAdditionSentence(10, 20, 200)));
 			sections.add(new MathSectionVO("Substraction", generateSubstractionSentence(10, 5, 200)));
 			sections.add(new MathSectionVO("Simple Multiplication", generateSimpleMultiplicationSentence(10, 10, 100)));
+			sections.add(new MathSectionVO("Simple Division", generateDivisionSentence(10, 20, 100)));
 			sections.add(
 					new MathSectionVO("Advance Multiplication", generateAdvanceMultiplicationSentence(10, 20, 250)));
-			sections.add(new MathSectionVO("Division", generateDivisionSentence(10, 20, 150)));
+			sections.add(new MathSectionVO("Advance Division", generateDivisionSentence(10, 20, 150)));
+		} else if ("6".equalsIgnoreCase(gradeKey)) {
+			sections.add(new MathSectionVO("Addition", generateAdditionSentence(10, 20, 300)));
+			sections.add(new MathSectionVO("Substraction", generateSubstractionSentence(10, 5, 300)));
+			sections.add(new MathSectionVO("Simple Multiplication", generateSimpleMultiplicationSentence(10, 10, 100)));
+			sections.add(new MathSectionVO("Simple Division", generateDivisionSentence(10, 20, 100)));
+			sections.add(
+					new MathSectionVO("Advance Multiplication", generateAdvanceMultiplicationSentence(10, 20, 450)));
+			sections.add(new MathSectionVO("Advance Division", generateDivisionSentence(10, 20, 250)));
 		} else {
-			throw new IllegalArgumentException("Supported grades: 2, 3, 4, 5");
+			throw new IllegalArgumentException("Supported grades: 2, 3, 4, 5, 6");
 		}
 		return sections;
 	}

@@ -22,6 +22,7 @@ public class DocumentGeneratorService {
 		}
 
 		document.append("</table>");
+//		document.append(generateBuffer(8));
 		document.append("</body></html>");
 		return document.toString();
 	}
@@ -52,6 +53,14 @@ public class DocumentGeneratorService {
 		row.append(column2);
 		row.append("</td></tr>");
 		return row.toString();
+	}
+	
+	private String generateBuffer(int size) {
+		StringBuilder section = new StringBuilder();	
+		for (int index = 0; index < size; index++) {
+			section.append("<br>");
+		}
+		return section.toString();
 	}
 
 }

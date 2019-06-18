@@ -21,10 +21,10 @@ import com.housegap.home.math.elementary.vo.MathSectionVO;
 public class ElementaryMathController {
 
 	private Logger logger = LoggerFactory.getLogger(ElementaryMathController.class);
-	
+
 	@Autowired
 	private MathService mathService;
-	
+
 	@Autowired
 	private DocumentGeneratorService documentGeneratorService;
 
@@ -33,7 +33,7 @@ public class ElementaryMathController {
 		logger.info("Getting default");
 		return "Hello from Elementary Math!";
 	}
-	
+
 	@RequestMapping(value = "/grade/{gradeKey}", method = RequestMethod.GET)
 	public ResponseEntity<?> getMathByGradeAndStudent(@PathVariable("gradeKey") @NotNull String gradeKey) {
 		logger.info("Getting math for grade: " + gradeKey);
@@ -41,11 +41,19 @@ public class ElementaryMathController {
 	}
 
 	@RequestMapping(value = "/grade/{gradeKey}/{studentName}", method = RequestMethod.GET)
-	public ResponseEntity<?> getMathByGradeAndStudent(@PathVariable("gradeKey") @NotNull String gradeKey, @PathVariable("studentName")String studentName) {
+	public ResponseEntity<?> getMathByGradeAndStudent(@PathVariable("gradeKey") @NotNull String gradeKey,
+			@PathVariable("studentName") String studentName) {
 		logger.info("Getting math for grade: " + gradeKey + ", student: " + studentName);
 		return getMath(gradeKey, studentName);
 	}
 	
+	@RequestMapping(value = "/grade/{gradeKey}/{studentName}/pages/{numberOfPages}", method = RequestMethod.GET)
+	public ResponseEntity<?> getMultipleMathByGradeAndStudent(@PathVariable("gradeKey") @NotNull String gradeKey,
+			@PathVariable("studentName") String studentName, @PathVariable("numberOfPages") int numberOfPages) {
+		logger.info("Getting math for grade: " + gradeKey + ", student: " + studentName + ", numberOfPages: " + numberOfPages);		
+		return getMath(gradeKey, studentName, numberOfPages);
+	}
+
 	private ResponseEntity<?> getMath(String gradeKey, String studentName) {
 		logger.info("Getting math for grade: " + gradeKey);
 		try {
@@ -53,6 +61,23 @@ public class ElementaryMathController {
 			String document = documentGeneratorService.generateDocument(studentName, sentences);
 			logger.info("Getting math for grade {} success ", gradeKey);
 			return ResponseEntity.ok().body(document);
+		} catch (Exception e) {
+			logger.error("Getting math for grade {} fail ", e, gradeKey);
+			return ResponseEntity.badRequest().body("Error while getting math for grade: " + e.getMessage());
+		}
+	}
+
+	private ResponseEntity<?> getMath(String gradeKey, String studentName, int numberOfPages) {
+		logger.info("Getting math for grade: " + gradeKey);
+		try {
+			StringBuilder documentBuilder = new StringBuilder();
+			for (int n = 0; n < numberOfPages; n++) {
+				List<MathSectionVO> sentences = mathService.getMathSentences(gradeKey);
+				String document = documentGeneratorService.generateDocument(studentName, sentences);
+				documentBuilder.append(document);
+			}
+			logger.info("Getting math for grade {} success ", gradeKey);
+			return ResponseEntity.ok().body(documentBuilder.toString());
 		} catch (Exception e) {
 			logger.error("Getting math for grade {} fail ", e, gradeKey);
 			return ResponseEntity.badRequest().body("Error while getting math for grade: " + e.getMessage());
