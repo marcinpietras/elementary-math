@@ -38,7 +38,14 @@ public class ElementaryMathService implements MathService {
 	@Override
 	public List<MathSectionVO> getMathSentences(String gradeKey) throws IllegalArgumentException {
 		List<MathSectionVO> sections = new LinkedList<MathSectionVO>();
-		if ("2".equalsIgnoreCase(gradeKey)) {
+		if ("1".equalsIgnoreCase(gradeKey)) {
+			sections.add(new MathSectionVO("Addition", generateAdditionSentence(10, 1, 30)));
+			sections.add(new MathSectionVO("Substraction", generateSubstractionSentence(10, 1, 20)));
+			sections.add(new MathSectionVO("Simple Multiplication", generateSimpleMultiplicationSentence(10, 1, 20)));
+			sections.add(new MathSectionVO("Simple Division", generateDivisionSentence(10, 1, 20)));
+			sections.add(new MathSectionVO("Addition", generateAdditionSentence(10, 10, 50)));
+			sections.add(new MathSectionVO("Substraction", generateSubstractionSentence(10, 3, 40)));
+		} else if ("2".equalsIgnoreCase(gradeKey)) {
 			sections.add(new MathSectionVO("Addition", generateAdditionSentence(10, 20, 100)));
 			sections.add(new MathSectionVO("Substraction", generateSubstractionSentence(10, 5, 100)));
 			sections.add(new MathSectionVO("Simple Multiplication", generateSimpleMultiplicationSentence(10, 10, 40)));
